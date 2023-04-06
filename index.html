@@ -1,0 +1,241 @@
+<!-- <html>
+    <head>
+        <title>Form</title>
+        <script defer src ="script.js"></script>
+        <link rel = "stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id ="error"></div>
+        <form id ="form" action ='/' method ="post">
+            <div>
+                <label for ="name">Name</label>
+                <input id = "name" type="text" name="name" required>
+            </div>
+            <div>
+                <label for ="email">Email</label>
+                <input id ="email" type = "email" name="email">
+            </div>
+            <div>
+                <label for = "num">Number</label>
+                <input id ="num" type = "number" name ="num">
+            </div>
+            <div>
+                <label for="dob">DOB</label>
+                <input id="dob" type="date" name="date" required>
+            </div>
+            <div>
+                <input id="male" type="radio" name="gender" value = "male">
+                <label for="gender">Male</label>
+                <input id="female" type="radio" name="gender" value="female">
+                <label for ="gender">Feamale</label>
+            </div>
+            <div>
+                <label for="city">City</label>
+                <input id="city" type="text" name="city" required>
+            </div>
+            <div>
+                <label for ="state">State</label>
+                <input id = "state" type="text" name ="state" required>
+            </div>
+            <div>
+                <label for="zip">Zip</label>
+                <input id="zip" type="number" name="zip" required>
+            </div>
+        
+            <div>
+                <label for="password">password</label>
+                <input id="password" type="password" name="password">
+            </div>
+            <button id="submit">Submit</button>
+        </form>
+    </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .block {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .header {
+        align-self: center;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+    }
+
+    .fname {
+        display: flex;
+        justify-content: center;
+        margin: 10px 10px 10px 10px;
+    }
+
+    .fname label {
+        margin-right: 10px;
+    }
+
+    .lname {
+        display: flex;
+        justify-content: center;
+        margin: 10px 10px 10px 10px;
+    }
+
+    .lname label {
+        margin-right: 10px;
+    }
+
+    .email {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 10px 10px 10px;
+    }
+
+
+    .email label {
+        margin-right: 10px;
+    }
+
+    .number {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 10px 10px 10px;
+    }
+
+    .number label {
+        margin-right: 10px;
+    }
+
+    .password {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 10px 10px 10px;
+    }
+
+    .password label {
+        margin-right: 10px;
+    }
+
+    .submit {
+        align-self: center;
+        margin: 10px 10px 10px 10px;
+    }
+</style>
+
+<body>
+    <form action="" method="" id="registerForm">
+        <div class="block">
+            <div class="container">
+                <div class="header">
+                    <h1>Register here</h1>
+                </div>
+                <div class="fname">
+                    <label for="firstname"><b>First Name</b></label>
+                    <input type="text" placeholder="Enter First Name" name="firstname" id="firstname" required>
+                </div>
+
+                <div class="lname">
+                    <label for="lastname"><b>Last Name</b></label>
+                    <input type="text" placeholder="Enter Last Name" name="lastname" id="lastname" required>
+                </div>
+                <div class="email">
+                    <label for="email"><b>Email</b></label>
+                    <input type="email" placeholder="Enter Email" name="email" id="email" required>
+                </div>
+                <div class="number">
+                    <label for="phonenumber"><b>Phone number</b></label>
+                    <input type="telephone" placeholder="Enter Phone number" name="phonenumber" id="phonenumber"
+                        required>
+                        <div class="lname">
+                            <label for="country"><b>Country</b></label>
+                            <input type="text" placeholder="Enter Last Name" name="country" id="country" required>
+                        </div>
+                        <div class="lname">
+                            <label for="zipcode"><b>Zipcode</b></label>
+                            <input type="number" placeholder="Enter Last Name" name="zipcode" id="zipcode" required>
+                        </div>
+                </div>
+                <div class="password">
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+                </div>
+                <div class="submit">
+                    <button type="submit" class="registerbtn">Register</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div>
+        <h1>First Name : <span id="name1"></span></h1>
+        <h1>Last Name : <span id="name2"></span></h1>
+        <h1>Email : <span id="em"></span></h1>
+    </div>
+
+    <script>
+
+        let registerForm = document.getElementById("registerForm");
+        registerForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            let firstname = document.getElementById("firstname");
+            let lastname = document.getElementById("lastname");
+            let email = document.getElementById("email");
+            let phonenumber = document.getElementById("phonenumber");
+            let psw = document.getElementById("psw");
+
+            if (firstname.value == "" || psw.value == "" || lastname.value == "" || email == "" || phonenumber == "") {
+                alert("Ensure you input a value in both fields!");
+            } else {
+                // perform operation with form input
+                console.log("good");
+
+            }
+
+            fetch('http://localhost:4000/test', {
+                method: 'POST',
+                body: JSON.stringify({
+                    firstname: firstname.value,
+                    lastname: lastname.value,
+                    email: email.value,
+                    phonenumber: phonenumber.value
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                }
+            })
+                .then(function (response) {
+                    return response.json()
+                })
+                .then(function (data) {
+                    console.log(data)
+                    let name1 = document.getElementById("name1")
+                    let name2 = document.getElementById("name2")
+                    let em = document.getElementById("em");
+                    name1.innerHTML = data[0].firstname
+                    name2.innerHTML = data[0].lastname
+                    em.innerHTML = data[0].email
+                    // phonenumber.innerHTML = data.phonenumber
+                }).catch(error => console.error('Error:', error));
+
+            firstname.value = "";
+            lastname.value = "";
+            email.value = "";
+            phonenumber.value = "";
+            psw.value = "";
+        });
+    </script>
+</body>
+
+</html>
